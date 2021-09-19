@@ -42,6 +42,7 @@ export const GlobalStyle = createGlobalStyle`
   body, input, textarea, button {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
+    outline-color: var(--blue);
   }
 
   h1, h2, h3, h4, h5, h6, strong {
@@ -55,5 +56,49 @@ export const GlobalStyle = createGlobalStyle`
   [disabled] {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  .react-modal-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0, .5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 2s;
+  }
+
+  .react-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 576px;
+    
+    padding: 4rem 3rem;
+    border-radius: 0.25rem;
+    background: var(--background);
+    box-shadow: var(---elevation-1);
+  }
+
+  .react-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+
+    border: none;
+    background: transparent;
+    transition: filter 0.2s;
+    transition: transform 0.2s;
+
+    &:hover {
+      filter: brightness(0.8);
+      transform: scale(1.1);
+    }
   }
 `;
