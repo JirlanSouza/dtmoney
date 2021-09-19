@@ -1,4 +1,4 @@
-import { createGlobalStyle} from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
@@ -13,6 +13,9 @@ export const GlobalStyle = createGlobalStyle`
     
     --background: #F0F2F5;
     --shape: #FFFFFF;
+
+    --elevation-0: 0 1px 1px 1px #0000000F;
+    --elevation-1: 0 1px 2px 1px #0000002A;
   }
 
   * {
@@ -32,7 +35,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: var(---background);
+    background: var(--background);
     -webkit-font-smoothing: antialiased;
   }
 
@@ -53,4 +56,4 @@ export const GlobalStyle = createGlobalStyle`
     opacity: 0.6;
     cursor: not-allowed;
   }
-`
+`;

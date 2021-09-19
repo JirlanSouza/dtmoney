@@ -1,16 +1,17 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  margin-top:  -8rem;
+  margin-top: -4.7rem;
 
   div {
     background: var(--shape);
     padding: 1.5rem 2rem;
     border-radius: 0.25rem;
     color: var(--text-title);
+    box-shadow: var(--elevation-1);
   }
 
   header {
@@ -29,6 +30,6 @@ export const Container = styled.div`
 
   div.highlight-background {
     background: var(--green);
-    color: #FFF;
+    color: #fff;
   }
 `;
