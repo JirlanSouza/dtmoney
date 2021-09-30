@@ -6,6 +6,7 @@ import incomeImg from "../../assets/income.svg";
 import outcomeImg from "../../assets/outcome.svg";
 import { useRef, useState } from "react";
 import { api } from "../../service/api";
+import { useTransaction } from "../../context/TransactionsContext";
 
 interface NewTransactionModalProps {
   isOpen: boolean;
@@ -13,25 +14,37 @@ interface NewTransactionModalProps {
 }
 
 export function NewTransactionModal(props: NewTransactionModalProps) {
-  const [type, setType] = useState("deposit");
-  const nameInputRef = useRef<HTMLInputElement>(null);
-  const valueInputRef = useRef<HTMLInputElement>(null);
-  const categoryInputRef = useRef<HTMLInputElement>(null);
+  const [type, setType] = useState<"deposit" | "withdrawal">("deposit");
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState("");
+  const [category, setCategory] = useState("");
 
-  function handleCreateNewTransaction(event: React.FormEvent<HTMLFormElement>) {
+  const { createTransaction } = useTransaction();
+
+  async function handleCreateNewTransaction(
+    event: React.FormEvent<HTMLFormElement>
+  ) {
     event.preventDefault();
 
     const transactionData = {
-      name: nameInputRef.current?.value,
-      value: Number(valueInputRef.current?.value),
-      category: categoryInputRef.current?.value,
+      title,
+      amount: Number(amount),
+      category,
       type,
-      createdAt: Date(),
     };
 
-    api.post("/transactions", transactionData);
+    const createdTransaction = await createTransaction(transactionData);
 
-    console.log(transactionData);
+    if (!createdTransaction) {
+      return;
+    }
+
+    setTitle("");
+    setAmount("");
+    setCategory("");
+    setType("deposit");
+
+    props.onRequestClose();
   }
 
   return (
@@ -50,8 +63,17 @@ export function NewTransactionModal(props: NewTransactionModalProps) {
       <Container onSubmit={handleCreateNewTransaction}>
         <h2>Cadastrar transação</h2>
 
-        <input ref={nameInputRef} placeholder="Nome" />
-        <input ref={valueInputRef} type="number" placeholder="Preço" />
+        <input
+          value={title}
+          onChange={(event) => setTitle(event?.target.value)}
+          placeholder="Nome"
+        />
+        <input
+          value={amount}
+          onChange={(event) => setAmount(event.target.value)}
+          type="number"
+          placeholder="Preço"
+        />
 
         <TransactionTypeContainer>
           <RadioBox
@@ -74,7 +96,11 @@ export function NewTransactionModal(props: NewTransactionModalProps) {
           </RadioBox>
         </TransactionTypeContainer>
 
-        <input ref={categoryInputRef} placeholder="Categoria" />
+        <input
+          value={category}
+          onChange={(event) => setCategory(event.target.value)}
+          placeholder="Categoria"
+        />
         <button type="submit">Cadastrar</button>
       </Container>
     </Modal>
