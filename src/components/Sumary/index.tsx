@@ -1,12 +1,12 @@
 import incomeImg from "../../assets/income.svg";
 import outcomeImg from "../../assets/outcome.svg";
 import totalImg from "../../assets/total.svg";
-import { useTransaction } from "../../context/TransactionsContext";
+import { useTransactions } from "../../context/TransactionsContext";
 
 import { Container } from "./styles";
 
 export function Sumary() {
-  const { transactions } = useTransaction();
+  const { transactions } = useTransactions();
   const currency = new Intl.NumberFormat("pt-br", {
     style: "currency",
     currency: "BRL",

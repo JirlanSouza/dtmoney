@@ -67,6 +67,6 @@ export function TransactionProvider(props: TransactionProviderProps) {
   );
 }
 
-export function useTransaction() {
+export function useTransactions() {
   return useContext(TransactionContext);
 }

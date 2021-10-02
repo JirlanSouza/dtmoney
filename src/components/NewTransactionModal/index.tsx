@@ -6,7 +6,7 @@ import incomeImg from "../../assets/income.svg";
 import outcomeImg from "../../assets/outcome.svg";
 import { useRef, useState } from "react";
 import { api } from "../../service/api";
-import { useTransaction } from "../../context/TransactionsContext";
+import { useTransactions } from "../../context/TransactionsContext";
 
 interface NewTransactionModalProps {
   isOpen: boolean;
@@ -19,7 +19,7 @@ export function NewTransactionModal(props: NewTransactionModalProps) {
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
 
-  const { createTransaction } = useTransaction();
+  const { createTransaction } = useTransactions();
 
   async function handleCreateNewTransaction(
     event: React.FormEvent<HTMLFormElement>
