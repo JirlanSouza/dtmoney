@@ -26,7 +26,7 @@ export function TransactionsTable() {
                     transaction.type === "deposit" ? "deposit" : "withdrawal"
                   }
                 >
-                  {transaction.type !== "deposit" && "-"}
+                  {transaction.type !== "deposit" && "- "}
                   {new Intl.NumberFormat("pt-br", {
                     style: "currency",
                     currency: "BRL",
