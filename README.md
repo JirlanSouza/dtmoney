@@ -10,9 +10,10 @@ Is Application for managing finance inputs and outputs.
 > MirageJs
 
 ## Pages
-
+### Home
 ![home](./screenShots/home.png?raw=true)
 
+### New transaction
 ![home](./screenShots/addTransaction.png)
 
 ## To run project
