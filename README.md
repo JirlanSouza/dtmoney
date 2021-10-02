@@ -1,6 +1,6 @@
-# DtMoney
+# Dt money
 
-Is application to manager off deposits and withdraws finance.
+Is Application for managing finance inputs and outputs.
 
 ### Technologies used
 
@@ -8,6 +8,12 @@ Is application to manager off deposits and withdraws finance.
 > ReactJs  
 > Styled-components  
 > MirageJs
+
+## Pages
+
+![home](./screenShots/home.png?raw=true)
+
+![home](./screenShots/addTransaction.png)
 
 ## To run project
 
