@@ -26,4 +26,4 @@ In the project directory, you can run:
 
 ## License
 
-This project is under license [MIT](LICENCE)
+This project is under license [MIT](LICENSE)
